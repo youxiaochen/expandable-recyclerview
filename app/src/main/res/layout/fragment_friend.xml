@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <chen.you.expandable.ExpandableRecyclerView
+            android:id="@+id/erv"
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="0dp"
+            android:layout_weight="1.2"
+            android:layout_height="match_parent"
+            android:background="#55ffff00">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/et0"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:gravity="center_vertical"
+                    android:hint="输入name"
+                    android:textSize="13sp"
+                    android:background="@null" />
+
+                <EditText
+                    android:id="@+id/et1"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:gravity="center_vertical"
+                    android:hint="输入groupPosition"
+                    android:textSize="13sp"
+                    android:background="@null" />
+
+                <EditText
+                    android:id="@+id/et2"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:gravity="center_vertical"
+                    android:hint="输入childPosition"
+                    android:textSize="13sp"
+                    android:background="@null" />
+
+                <EditText
+                    android:id="@+id/et3"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:gravity="center_vertical"
+                    android:hint="输入Range Size"
+                    android:textSize="13sp"
+                    android:background="@null" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="32dp"
+                    android:textSize="11sp"
+                    android:textAllCaps="false"
+                    android:gravity="center"
+                    android:text="notifyDataSetChanged" />
+
+                <Button android:id="@+id/bt0"
+                    android:layout_width="match_parent"
+                    android:layout_height="32dp"
+                    android:textSize="9sp"
+                    android:textAllCaps="false"
+                    android:text="notifyGroupChanged" />
+
+                <Button android:id="@+id/bt1"
+                    android:layout_width="match_parent"
+                    android:layout_height="32dp"
+                    android:textSize="9sp"
+                    android:textAllCaps="false"
+                    android:text="notifyGroupRangeChanged" />
+
+                <Button android:id="@+id/bt2"
+                    android:layout_width="match_parent"
+                    android:layout_height="32dp"
+                    android:textSize="9sp"
+                    android:textAllCaps="false"
+                    android:text="notifyGroupInserted" />
+
+                <Button android:id="@+id/bt3"
+                    android:layout_width="match_parent"
+                    android:layout_height="32dp"
+                    android:textSize="9sp"
+                    android:textAllCaps="false"
+                    android:text="notifyGroupRangeInserted" />
+
+                <Button android:id="@+id/bt4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="9sp"
+                    android:textAllCaps="false"
+                    android:text="GroupRangeInsertedAndExpand" />
+
+                <Button android:id="@+id/bt5"
+                    android:layout_width="match_parent"
+                    android:layout_height="32dp"
+                    android:textSize="9sp"
+                    android:textAllCaps="false"
+                    android:text="notifyGroupRemoved" />
+
+                <Button android:id="@+id/bt6"
+                    android:layout_width="match_parent"
+                    android:layout_height="32dp"
+                    android:textSize="9sp"
+                    android:textAllCaps="false"
+                    android:text="notifyGroupRangeRemoved" />
+
+                <Button android:id="@+id/bt7"
+                    android:layout_width="match_parent"
+                    android:layout_height="32dp"
+                    android:textSize="9sp"
+                    android:textAllCaps="false"
+                    android:text="notifyChildChanged" />
+
+                <Button android:id="@+id/bt8"
+                    android:layout_width="match_parent"
+                    android:layout_height="32dp"
+                    android:textSize="9sp"
+                    android:textAllCaps="false"
+                    android:text="notifyChildInserted" />
+
+                <Button android:id="@+id/bt9"
+                    android:layout_width="match_parent"
+                    android:layout_height="32dp"
+                    android:textSize="9sp"
+                    android:textAllCaps="false"
+                    android:text="notifyChildRangeInserted" />
+
+                <Button android:id="@+id/bt10"
+                    android:layout_width="match_parent"
+                    android:layout_height="32dp"
+                    android:textSize="9sp"
+                    android:textAllCaps="false"
+                    android:text="notifyChildRangeRemoved" />
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+    </LinearLayout>
+</layout>
