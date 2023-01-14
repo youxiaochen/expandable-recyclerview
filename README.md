@@ -66,6 +66,7 @@ dependencies {
 
 
 #### 使用及扩展可参考Demo中的extern包
+[示例包下载](image-and-apk/expandablerecyclerview-test.apk)
 ![image](image-and-apk/demo0.png)
 ![image](image-and-apk/demo1.gif)
 
