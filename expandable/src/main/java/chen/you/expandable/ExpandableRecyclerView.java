@@ -792,7 +792,7 @@ public class ExpandableRecyclerView extends RecyclerView {
         /**
          * {@link ExpandableConnector#getItemViewType(int)},{@link ExpandableConnector#onBindViewHolder(ViewHolder, int)}
          * 特别在GridLayoutManager,瀑布流布局时会大量查找PositionMetadata信息, 此方法即是缓存PositionMetadata的数量大小,
-         * 通常大概为界面显示的ViewHolder数量(转为2的冥次)即可
+         * 通常大概为界面显示的ViewHolder数量即可(会自动转为2的冥次)
          */
         public int getPositionPoolSize() {
             return ExpandableConnector.DEF_CAPACITY;
