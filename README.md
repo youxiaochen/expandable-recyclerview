@@ -58,12 +58,7 @@ dependencies {
 | notifyChildRemoved,  notifyChildRangeRemoved     | child remove      RangeRemoved                   |
 | registerAdapterDataObserver,unRegister...        | ExpandableAdapter注册与取消 观察者, 用于扩展(如StickyAdapter) |
 
-#### 博客地址  侍...
-
-
-
-
-
+#### 博客地址  https://www.jianshu.com/p/9865cbc832e8
 
 #### 使用及扩展可参考Demo中的extern包
 #### [示例包下载](image-and-apk/expandablerecyclerview-test.apk)
