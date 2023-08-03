@@ -187,15 +187,16 @@ final class ExpandableConnector extends RecyclerView.Adapter<RecyclerView.ViewHo
                         if (currentTime - lastClickTime < CLICK_TIME) return;
                         lastClickTime = currentTime;
                         PositionMetadata metadata = findPositionMetadata(gvh.getBindingAdapterPosition());
+                        int groupIndex = metadata.index;//要先记录,否则展开或闭合后会有变动
                         if (gvh.isExpanded()) {
                             if (collapseGroup(metadata)) {
                                 gvh.mExpanded = false;
-                                mAdapter.onGroupStateChanged(gvh, metadata.index, false);
+                                mAdapter.onGroupStateChanged(gvh, groupIndex, false);
                             }
                         } else {
                             if (expandGroup(metadata)) {
                                 gvh.mExpanded = true;
-                                mAdapter.onGroupStateChanged(gvh, metadata.index, true);
+                                mAdapter.onGroupStateChanged(gvh, groupIndex, true);
                             }
                         }
                     }
