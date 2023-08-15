@@ -27,7 +27,7 @@ final class ExpandableConnector extends RecyclerView.Adapter<RecyclerView.ViewHo
     static final int MAX_CAPACITY = 1 << 6;
     static final int DEF_CAPACITY = 1 << 4;
     //展开及叠起时防抖点击时间
-    static final int CLICK_TIME = 600;
+    static final int CLICK_TIME = 500;
 
     //检测是否为GroupType的标记  二进制 0101010101010101
     static final int GROUP_TYPE_TAG = 0x5555;
@@ -50,6 +50,8 @@ final class ExpandableConnector extends RecyclerView.Adapter<RecyclerView.ViewHo
     //缓存当前PositionMetadata的索引信息, RecyclerView在LayoutManager布局时会大量的调用getItemViewType,
     //特别是GridLayoutManager,StaggeredGridLayoutManager, 及onBindViewHolder时也会大量使用到PositionMetadata
     private final PositionMetadata[] positionPools;
+    //展开与关闭时的刷新通知
+    private Object payloadObj = new Object();
 
     static boolean isGroupViewType(int viewType) {
         return (viewType >>> GROUP_TYPE_SR) == GROUP_TYPE_TAG;
@@ -212,6 +214,14 @@ final class ExpandableConnector extends RecyclerView.Adapter<RecyclerView.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position, @NonNull List<Object> payloads) {
+        if (!payloads.isEmpty() && payloads.get(0) == payloadObj) {
+            PositionMetadata metadata = findPositionMetadata(position);
+            if (metadata.isGroup()) {
+                ExpandableRecyclerView.GroupViewHolder gvh = (ExpandableRecyclerView.GroupViewHolder) holder;
+                gvh.mExpanded = metadata.isExpanded();
+            }
+            return;
+        }
         PositionMetadata metadata = findPositionMetadata(position);
         if (metadata.isGroup()) {
             ExpandableRecyclerView.GroupViewHolder gvh = (ExpandableRecyclerView.GroupViewHolder) holder;
@@ -225,6 +235,7 @@ final class ExpandableConnector extends RecyclerView.Adapter<RecyclerView.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+        //nothing
     }
 
     @Override
@@ -323,8 +334,8 @@ final class ExpandableConnector extends RecyclerView.Adapter<RecyclerView.ViewHo
             groupMetadataList.get(i).offset(expandChildCount);
         }
         mTotalChildCount += expandChildCount;
-//        notifyItemChanged(insertMetadata.position); //不刷新Group
 
+        notifyItemChanged(insertMetadata.position, payloadObj);
         refreshPools();
         if (expandChildCount > 0) {
             notifyItemRangeInserted(insertMetadata.position + 1, expandChildCount);
@@ -352,7 +363,8 @@ final class ExpandableConnector extends RecyclerView.Adapter<RecyclerView.ViewHo
             groupMetadataList.get(i).offset(-rmChildCount);
         }
         mTotalChildCount -= rmChildCount;
-//        notifyItemChanged(rmMetadata.position); //不刷新Group
+
+        notifyItemChanged(rmMetadata.position, payloadObj);
         refreshPools();
         if (rmChildCount > 0) {
             notifyItemRangeRemoved(rmMetadata.position + 1, rmChildCount);
