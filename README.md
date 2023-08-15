@@ -12,7 +12,7 @@ allprojects {
 }
 
 dependencies {
-	implementation 'com.github.youxiaochen:expandable-recyclerview:1.0.1'
+	implementation 'com.github.youxiaochen:expandable-recyclerview:1.0.2'
 }
 ```
 
