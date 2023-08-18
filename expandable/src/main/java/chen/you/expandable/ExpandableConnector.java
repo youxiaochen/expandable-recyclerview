@@ -35,8 +35,6 @@ final class ExpandableConnector extends RecyclerView.Adapter<RecyclerView.ViewHo
     static final int GROUP_TYPE_SR = 16;
     //校验ViewType是否为Group/Child  11111111 右侧为adapter getType 00000000 00000000
     static final int GROUP_TYPE_CHECK = GROUP_TYPE_TAG << GROUP_TYPE_SR;
-    //大32位的用于标记Group的itemId
-    static final long GROUP_ID = 1L << 32;
 
     //ExpandableRecyclerView Adapter
     @NonNull
@@ -51,7 +49,7 @@ final class ExpandableConnector extends RecyclerView.Adapter<RecyclerView.ViewHo
     //特别是GridLayoutManager,StaggeredGridLayoutManager, 及onBindViewHolder时也会大量使用到PositionMetadata
     private final PositionMetadata[] positionPools;
     //展开与关闭时的刷新通知
-    private Object payloadObj = new Object();
+    private final Object payloadObj = new Object();
 
     static boolean isGroupViewType(int viewType) {
         return (viewType >>> GROUP_TYPE_SR) == GROUP_TYPE_TAG;
@@ -242,7 +240,7 @@ final class ExpandableConnector extends RecyclerView.Adapter<RecyclerView.ViewHo
     public long getItemId(int position) {
         PositionMetadata metadata = findPositionMetadata(position);
         if (metadata.isGroup()) {
-            return mAdapter.getGroupItemId(metadata.index) + GROUP_ID;
+            return mAdapter.getGroupItemId(metadata.index);
         } else {
             return mAdapter.getChildItemId(metadata.groupMetadata.index, metadata.index);
         }

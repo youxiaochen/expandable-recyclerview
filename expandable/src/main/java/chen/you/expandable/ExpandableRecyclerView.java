@@ -765,12 +765,12 @@ public class ExpandableRecyclerView extends RecyclerView {
             return false;
         }
 
-        public int getGroupItemId(int groupPos) {
-            return (int) NO_ID;
+        public long getGroupItemId(int groupPos) {
+            return NO_ID;
         }
 
-        public int getChildItemId(int groupPos, int childPos) {
-            return (int) NO_ID;
+        public long getChildItemId(int groupPos, int childPos) {
+            return NO_ID;
         }
 
         /**
