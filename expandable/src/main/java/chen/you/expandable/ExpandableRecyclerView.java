@@ -801,6 +801,8 @@ public class ExpandableRecyclerView extends RecyclerView {
         /**
          * 叠起或者展开, 可在此方法中处理展开与叠起时的箭头动画, 必须groupCanClick true, 亦可将此当OnGroupClickListener
          * 如此组不可点击时, 还需要点击事件可在onCreateGroupViewHolder中设置点击事件
+         * 注意: 此方法只是在默认Group点击时的状态回调, {@link ExpandableRecyclerView#expandGroup(int)},
+         * {@link ExpandableRecyclerView#collapseGroup(int)} 手动展开关闭不会回调此方法
          */
         public void onGroupStateChanged(@NonNull GVH vh, int groupPos, boolean isExpanded) {}
 
