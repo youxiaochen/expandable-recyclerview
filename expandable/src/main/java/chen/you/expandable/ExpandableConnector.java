@@ -43,7 +43,7 @@ final class ExpandableConnector extends RecyclerView.Adapter<RecyclerView.ViewHo
     final ArrayList<GroupMetadata> groupMetadataList = new ArrayList<>();
     //记录下统共展开的Child的数量
     private int mTotalChildCount;
-    //2的冥次容量后通过位移计算出position的索引数组下标, 原理参考ArrayDeque
+    //2的冥次容量后通过位移计算出position的索引数组下标, 原理参考ArrayDeque的索引index
     private final int capacityIndex;
     //缓存当前PositionMetadata的索引信息, RecyclerView在LayoutManager布局时会大量的调用getItemViewType,
     //特别是GridLayoutManager,StaggeredGridLayoutManager, 及onBindViewHolder时也会大量使用到PositionMetadata
